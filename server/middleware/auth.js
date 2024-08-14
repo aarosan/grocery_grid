@@ -6,7 +6,7 @@ const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
-  console.log('Received token:', token); // Debugging line
+  // console.log('Received token:', token); // Debugging line
 
   if (!token) {
     console.log('No token provided'); // Debugging line
@@ -19,7 +19,7 @@ const authenticateToken = (req, res, next) => {
       return res.sendStatus(403);
     }
     
-    console.log('Token verified, user:', user); // Debugging line
+    // console.log('Token verified, user:', user); // Debugging line
     req.userId = user.userId; // Set req.userId from token payload
     next();
   });
