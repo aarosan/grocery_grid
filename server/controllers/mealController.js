@@ -1,15 +1,27 @@
 const Meal = require('../models/Meal');
+const User = require('../models/User');
 
 // Create a new meal document
 const createMeal = async (req, res) => {
   try {
+    console.log("REQ.USERID", req.userId);
+
     // Make sure to include the user ID from the request
     const newMeal = new Meal({
       ...req.body,
       user: req.userId, // Assuming you have middleware that sets req.userId to the authenticated user's ID
     });
+    console.log("New meal:", newMeal);
 
     await newMeal.save();
+
+    await User.findByIdAndUpdate(
+      req.userId, 
+      { $push: { meals: newMeal._id } },
+      { new: true }
+    );
+    console.log("User updated with new meal");
+
     res.status(201).json(newMeal);
   } catch (error) {
     res.status(400).json({ error: error.message });
