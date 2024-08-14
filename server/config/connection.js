@@ -1,7 +1,7 @@
 const { connect, connection } = require('mongoose');
 
 // Define the database name
-const dbName = 'exampleDatabase';
+const dbName = 'groceryGrid';
 
 // Get the MongoDB URI from environment variables or use a default value
 const mongoHost = process.env.MONGO_HOST || '127.0.0.1';

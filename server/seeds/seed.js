@@ -35,13 +35,13 @@ const seedDB = async () => {
 
   // Define meals for each user
   const meals1 = [
-    { mealType: 'Breakfast', mealName: 'Pancakes', ingredients: ['Flour', 'Eggs', 'Milk'], user: user1._id },
-    { mealType: 'Lunch', mealName: 'Salad', ingredients: ['Lettuce', 'Tomato', 'Cucumber'], user: user1._id },
+    { mealType: ['Breakfast'], mealName: 'Pancakes', ingredients: ['Flour', 'Eggs', 'Milk'], user: user1._id },
+    { mealType: ['Lunch'], mealName: 'Salad', ingredients: ['Lettuce', 'Tomato', 'Cucumber'], user: user1._id },
   ];
 
   const meals2 = [
-    { mealType: 'Dinner', mealName: 'Spaghetti', ingredients: ['Pasta', 'Tomato Sauce', 'Meatballs'], user: user2._id },
-    { mealType: 'Snack', mealName: 'Fruit Salad', ingredients: ['Apples', 'Bananas', 'Grapes'], user: user2._id },
+    { mealType: ['Dinner'], mealName: 'Spaghetti', ingredients: ['Pasta', 'Tomato Sauce', 'Meatballs'], user: user2._id },
+    { mealType: ['Snack'], mealName: 'Fruit Salad', ingredients: ['Apples', 'Bananas', 'Grapes'], user: user2._id },
   ];
 
   // Save meals for user1
