@@ -1,31 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import TestForm from './components/TestForm';
-import TestList from './components/TestList';
+import React, { useEffect, useState, createContext, useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Home from './components/Home';
+import './App.css';
 
-const App = () => {
-  const [tests, setTests] = useState([]);
+const AuthContext = createContext();
 
-  const fetchTests = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/tests');
-      const data = await response.json();
-      setTests(data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+const AuthProvider = ({ children }) => {
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
+
+  console.log('AuthProvider rendered, token:', token); // Debugging line
+
+  const signIn = (newToken) => {
+    setToken(newToken);
+    localStorage.setItem('token', newToken);
   };
 
-  useEffect(() => {
-    fetchTests();
-  }, []);
+  const signOut = () => {
+    setToken('');
+    localStorage.removeItem('token');
+  };
 
   return (
-    <div className="App">
-      <h1>Test Management</h1>
-      <TestForm fetchTests={fetchTests} />
-      <TestList tests={tests} />
-    </div>
+    <AuthContext.Provider value={{ token, signIn, signOut }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export default App;
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider'); // Clear error message
+  }
+  return context;
+};
+
+const App = () => {
+  const { token, signOut } = useAuth();
+
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route
+        path="/"
+        element={token ? <Home signOut={signOut} /> : <Navigate to="/login" />}
+      />
+    </Routes>
+  );
+};
+
+const AppWrapper = () => {
+  return (
+    <Router>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Router>
+  );
+};
+
+export default AppWrapper;
