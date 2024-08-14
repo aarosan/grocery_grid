@@ -1,0 +1,241 @@
+.home-container {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* HEADER */
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.sign-out-button, .add-meal-button, .view-list-button {
+  margin: 10px;
+  padding: 15px;
+  border: solid .25px rgba(0, 0, 0, 0.75)
+}
+
+.sign-out-button:hover, .add-meal-button:hover, .view-list-button:hover {
+  background-color: #B44538;
+  color: white;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 300px; /* Adjust as needed */
+  position: fixed; /* Keep it fixed to the right */
+  right: 0;
+  top: 0;
+  height: 100%;
+  max-height: 100vh; /* Set a maximum height */
+  overflow-y: auto;
+  border-left: 1px solid #ccc; /* Optional border */
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  background-color: #F6D5BA;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dim background */
+}
+
+/* EDIT FORM */
+
+.edit-form, .form-container, .meal-name, .form-title, .meal-type-title, .meal-type-container-title, .meal-type-container, .meal-checkbox-title, .meal-type-checkbox-container, .meal-name-container, .meal-name-title, .ingredient-container, .ingredient-label, .form-buttons, .ingredient-inputs, .ingredient-buttons {
+  background-color: #F6D5BA;
+}
+
+
+.meal-type-checkboxes {
+  background-color: #F6D5BA;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid .25px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 15px;
+  gap: 20px
+}
+
+.ingredient-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  gap: 20px
+}
+
+.meal-name-container, .meal-type-container-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: solid .25px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.ingredient-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: solid .25px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.ingredient-buttons button, .form-buttons button {
+  border: solid .25px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+}
+
+.ingredient-buttons button:hover, .form-buttons button:hover {
+  background-color: #B44538;
+  color: white;
+  cursor: pointer;
+}
+
+/* DASHBOARD */
+
+.meal-type-component-title {
+  background-color: #FFE6C9;
+}
+
+.meal-type-container {
+  margin-bottom: 2rem;
+  background-color: #FFE6C9;
+}
+
+.meal-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.meal-card {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem;
+  width: 150px; /* Adjust the width as needed */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: rgba(99, 30, 77, 0.07);
+  border: solid .25px rgba(0, 0, 0, 0.75)
+}
+
+.meal-card:hover {
+  background-color: rgba(99, 30, 77, 0.75);
+  color: white;
+  cursor: pointer;
+}
+
+.meal-title {
+  margin: 1rem 0 0;
+  font-size: 1.2rem;
+  background-color: rgba(99, 30, 77, 0.00);
+}
+
+.meal-card-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(99, 30, 77, 0.00);}
+
+.edit-button, .view-ingredients-button {
+  border: solid .25px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+}
+
+.edit-button:hover, .view-ingredients-button:hover {
+  background-color: #B44538;
+  color: white;
+  cursor: pointer;
+}
+
+  /* GROCERY/INGREDIENT LIST */
+
+.grocery-list-title, .grocery-list, .ingredient-loop, .ingredient-loop-title, .grocery-list-buttons, .ingredient-checkboxes, .ingredients-list-buttons, .ingredients-list {
+  background-color: #F6D5BA;
+}
+
+.ingredient-loop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: solid .25px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  gap: 10px;
+}
+
+.grocery-list button, .ingredients-list-buttons button {
+  border: solid .25px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+}
+
+.grocery-list button:hover, .ingredients-list-buttons button:hover {
+  background-color: #B44538;
+  color: white;
+  cursor: pointer;
+}
+
+.grocery-list-buttons, .ingredients-list-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.delete-button {
+  height: 20px;
+}
+
+.ingredient-list-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #F6D5BA;
+  border: solid .25px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.ingredient-list-checkbox span {
+  margin-right: 50px;
+  width: 2000px;
+  background-color: #F6D5BA;
+}
