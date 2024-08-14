@@ -1,0 +1,89 @@
+/* Login.css */
+
+.login-container, .signup-container {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.svg-container {
+    flex: 0 0 60%; /* 60% width for the SVG */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the SVG vertically */
+}
+
+.svg-container img {
+    width: 70%; /* Reduce size to 30% of the original */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevent it from exceeding the container width */
+}
+
+
+.login-form-container, .sign-up-form-container {
+    flex: 0 0 40%; /* 40% width for the login form */
+    background-color: white; /* White background for the login form */
+    padding: 20px; /* Padding around the form */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center the content vertically */
+    border-radius: 10px; /* Optional: Add border radius */
+}
+
+.login-form-container h2, .sign-up-form-container h2 {
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.login-form-container input, .sign-up-form-container input {
+    margin-bottom: 10px; /* Space between input fields */
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Border for input fields */
+    border-radius: 5px; /* Border radius for input fields */
+}
+
+.login-form-container button, .sign-up-form-container button {
+    padding: 10px;
+    background-color: #B44538; /* Button color */
+    color: white; /* Text color for button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Border radius for button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.login-form-container button:hover, .sign-up-form-container button:hover{
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.login-form-container form, .sign-up-form-container form{
+    background-color: white;
+}
+
+
+input {
+    background-color: white; /* Set background color to white */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    padding: 10px; /* Optional: Add some padding */
+    border-radius: 4px; /* Optional: Add border-radius for rounded corners */
+    width: 100%; /* Optional: Make input fields take full width */
+    box-sizing: border-box; /* Optional: Include padding and border in width */
+}
+
+input:focus {
+    outline: none; /* Remove default outline on focus */
+    border-color: #007bff; /* Change border color on focus (optional) */
+}
+
+h2 {
+    background-color: white;
+}
+
+p {
+    background-color: white;
+}
+
+a {
+    background-color: white;
+}
+
+a:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
+}
