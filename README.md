@@ -100,3 +100,17 @@ Got a cool idea for a feature? Found a bug? Contributions are more than welcome!
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+## 📚 Citing Sources
+
+We used some amazing SVG illustrations for the signup and login pages. These were generously provided under the CC0 license from the Figma Community
+
+### A Special Thanks
+
+We'd like to extend our gratitude to the creator:
+
+> **mariako.truestory@gmail.com**
+
+### Learn More
+
+To learn more about the CC0 license, you can read more [here](https://creativecommons.org/publicdomain/zero/1.0/).
