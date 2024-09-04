@@ -43,43 +43,45 @@ const Signup = ({ setToken }) => {
       </div>
 
       <div className="sign-up-form-container">
-        <button onClick={() => navigate('/login')}>Back to Login</button>
-        <h2>Signup</h2>
-        <form onSubmit={handleSubmit}>
-          <p>
-            First Name
-          </p>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <p>
-            Last Name
-          </p>
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <p>
-            Username
-          </p>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <p>
-            Password
-          </p>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Signup</button>
-        </form>
+        <div className="sign-up-form-container-information">
+          <button onClick={() => navigate('/login')}>Back to Login</button>
+          <h2>Signup</h2>
+          <form onSubmit={handleSubmit}>
+            <p>
+              First Name
+            </p>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <p>
+              Last Name
+            </p>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            <p>
+              Username
+            </p>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <p>
+              Password
+            </p>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Signup</button>
+          </form>
+        </div>
       </div>
     </div>
   );

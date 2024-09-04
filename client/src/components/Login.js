@@ -36,39 +36,41 @@ const Login = ({ setToken }) => {
       </div>
 
       <div className="login-form-container">
+        <div className="login-form-container-information">
 
-        <h2>Login</h2>
+          <h2>Login</h2>
 
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
+
+            <p>
+              Username
+            </p>
+
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+
+            <p>
+              Password
+            </p>
+
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button type="submit">Login</button>
+
+          </form>
 
           <p>
-            Username
+            Don't have an account? <Link to="/signup">Sign up</Link>
           </p>
 
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          <p>
-            Password
-          </p>
-
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button type="submit">Login</button>
-
-        </form>
-
-        <p>
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </p>
-
+        </div>
       </div>
     </div>
   );

@@ -22,11 +22,16 @@
 .login-form-container, .sign-up-form-container {
     flex: 0 0 40%; /* 40% width for the login form */
     background-color: white; /* White background for the login form */
-    padding: 20px; /* Padding around the form */
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     justify-content: center; /* Center the content vertically */
     border-radius: 10px; /* Optional: Add border radius */
+}
+
+.login-form-container-information, .sign-up-form-container-information {
+    padding: 20px; /* Add some padding */
+    background-color: white;
+
 }
 
 .login-form-container h2, .sign-up-form-container h2 {
