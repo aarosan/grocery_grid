@@ -69,12 +69,6 @@ const Home = ({ signOut }) => {
         localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList));
     };
 
-    // Function to save the updated grocery list (optional)
-    const updateGroceryList = () => {
-        const updatedGroceryList = groceryList.map(item => ({ name: item.name, checked: item.checked }));
-        localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList));
-    };
-
     const addIngredientsToGroceryList = (selectedIngredients) => {
         const newIngredients = selectedIngredients.filter(ingredient => 
             !groceryList.some(item => item.name === ingredient) // Avoid duplicates
@@ -152,7 +146,6 @@ const Home = ({ signOut }) => {
 
 
             <div className="header-container">
-                <h1>Welcome</h1>
                 <div className="header-actions">
                     <button onClick={signOut} className="sign-out-button">
                     Sign Out
