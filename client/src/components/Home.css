@@ -138,6 +138,24 @@
   background-color: #FFE6C9;
 }
 
+.meal-type-header {
+  display: flex;
+  align-items: center;
+}
+
+.delete-all-types-button {
+  margin-left: 16px;
+  border: solid .25px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  height: 30px;
+}
+
+.delete-all-types-button:hover {
+  background-color: #B44538;
+  color: white;
+  cursor: pointer;
+}
+
 .meal-list {
   display: flex;
   flex-wrap: wrap;
