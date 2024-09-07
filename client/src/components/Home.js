@@ -97,50 +97,63 @@ const Home = ({ signOut }) => {
         localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList)); // Save updated list to local storage
     };
 
-    const saveNewMeal = async (mealData) => {
-        console.log('MEAL DATA BEING SENT FROM EDITFORM', mealData)  
-        const { _id, user, __v, ...dataToSend } = mealData;      
+    const createMeal = async (mealData) => {
+        const token = localStorage.getItem('token');
         try {
-            const token = localStorage.getItem('token');
-            const method = _id ? 'PUT' : 'POST'; // Determine method based on presence of _id
-            const url = _id 
-                ? `http://localhost:3001/api/users/meals/${_id}` 
-                : 'http://localhost:3001/api/users/meals';
-    
-            const response = await fetch(url, {
-                method: method,
+            const response = await fetch('http://localhost:3001/api/users/meals', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(dataToSend)
+                body: JSON.stringify(mealData),
             });
     
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-             const updatedMeal = await response.json();
-             console.log('New meal added:', updatedMeal);
-
-             setMeals((prevMeals) => {
-                if (_id) {
-                    // Update the existing meal
-                    return prevMeals.map((meal) => 
-                        meal._id === _id ? updatedMeal : meal
-                    );
-                } else {
-                    // Add a new meal
-                    return [...prevMeals, updatedMeal];
-                }
-            });
-
+    
+            const newMeal = await response.json();
+            setMeals((prevMeals) => [...prevMeals, newMeal]);
             closeSidebar();
         } catch (error) {
-            console.error('Error saving meal:', error);
-            setError('Failed to save meal.');
+            console.error('Error creating meal:', error);
+            setError('Failed to create meal.');
         }
-    };    
-
+    };
+    
+    const updateMeal = async (mealData) => {
+        console.log('updateMeal function invoked:', mealData);
+        const { _id, mealType, mealName, ingredients, user } = mealData;
+        console.log('dataToSend:', { mealType, mealName, ingredients, user });
+        const token = localStorage.getItem('token');
+        
+        try {
+          const response = await fetch(`http://localhost:3001/api/users/meals/${_id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({ mealType, mealName, ingredients, user }),
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          const updatedMeal = await response.json();
+          setMeals((prevMeals) =>
+            prevMeals.map((meal) => (meal._id === _id ? updatedMeal : meal))
+          );
+          closeSidebar();
+        } catch (error) {
+          console.error('Error updating meal:', error);
+          setError('Failed to update meal.');
+        }
+    };
+    
+    
     const deleteMeal = async (meal) => {
 
         try {
@@ -169,7 +182,6 @@ const Home = ({ signOut }) => {
     return (
         <div className="home-container">
 
-
             <div className="header-container">
                 <div className="header-actions">
                     <button onClick={signOut} className="sign-out-button">
@@ -197,15 +209,16 @@ const Home = ({ signOut }) => {
             {mode && (
                 <div className="sidebar-overlay">
                     <Sidebar 
-                        selectedMeal={selectedMeal} 
-                        onClose={closeSidebar} 
-                        ingredients={groceryList} 
-                        onIngredientChange={handleIngredientChange} 
-                        onDeleteIngredient={deleteIngredient}
-                        onSaveMeal={saveNewMeal} // Save meal function
-                        onSaveGroceryList={saveGroceryList} // Save grocery list function
-                        onAddIngredients={addIngredientsToGroceryList}
-                        mode={mode}
+                    selectedMeal={selectedMeal} 
+                    onClose={closeSidebar} 
+                    ingredients={groceryList} 
+                    onIngredientChange={handleIngredientChange} 
+                    onDeleteIngredient={deleteIngredient}
+                    onCreateMeal={createMeal} 
+                    onEditMeal={updateMeal} // Ensure this is correctly passed
+                    onSaveGroceryList={saveGroceryList}
+                    onAddIngredients={addIngredientsToGroceryList}
+                    mode={mode}
                     />
                 </div>
             )}

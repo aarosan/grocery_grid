@@ -43,16 +43,27 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
     setIngredients(ingredients.slice(0, -1));
   };
 
-  const handleSubmit = async (e) => {
-    console.log("submitting form");
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+  
+    console.log('Submit clicked');
     const mealData = { mealName, ingredients, mealType: selectedMealTypes };
-
-    console.log("Meal Data to be sent:", mealData);
-
-    onSave(mealData);
-    onClose();
+  
+    try {
+      if (mode === 'edit' && meal._id) {
+        // Update an existing meal
+        await onSave.onEditMeal({ _id: meal._id, ...mealData });
+      } else if (mode === 'add') {
+        // Create a new meal
+        await onSave.onCreateMeal(mealData);
+      }
+    } catch (error) {
+      console.error('Error in handleSubmit:', error);
+    }
+  
+    onClose(); // Close the modal or panel after saving
   };
+  
 
   return (
     <div className="edit-form">
@@ -130,7 +141,7 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
         <div className="form-buttons">
 
           <button type="button" onClick={onClose}>Home</button>
-          <button type="submit">Save</button>
+          <button type="submit">{mode === 'edit' ? 'Update Meal' : 'Add Meal'}</button>
         </div>
 
       </form>

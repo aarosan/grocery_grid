@@ -4,42 +4,39 @@ import GroceryList from './GroceryList';
 import IngredientList from './IngredientList';
 import { useAuth } from '../App'; // Importing useAuth
 
-const Sidebar = ({ selectedMeal, onClose, ingredients, onIngredientChange, onDeleteIngredient, onSaveMeal, onSaveGroceryList, onAddIngredients, mode }) => {
+const Sidebar = ({ selectedMeal, onClose, ingredients, onIngredientChange, onDeleteIngredient, onCreateMeal, onEditMeal, onSaveGroceryList, onAddIngredients, mode }) => {
   const { token } = useAuth(); // Get the token from context
 
   const handleSubmit = async (mealId, mealData) => {
-    console.log('Edit save clicked')
-    console.log('mealdata', mealData)
-    console.log('mealid', mealId)
+    console.log('Submit clicked');
+    console.log('mealData:', mealData);
+    console.log('mealId:', mealId);
+  
     try {
-      const url = mode === 'edit' 
-      ? `http://localhost:3001/api/users/meals/${mealId}` // Use PUT for editing an existing meal
-      : 'http://localhost:3001/api/users/meals'; // Use POST for creating a new meal
-
-      const method = mode === 'edit' ? 'PUT' : 'POST';
-      const response = await fetch(url, 
-        {
-          method: method,
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(mealData),
-        }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        onSaveMeal(result); // Trigger onSave callback with the result
+      let savedMeal;
+  
+      if (mode === 'edit' && mealId) {
+        savedMeal = await onEditMeal(mealData);
       } else {
-        console.error('Failed to save meal:', response.statusText);
+        savedMeal = await onCreateMeal(mealData);
       }
+  
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error in handleSubmit:', error);
     }
-
     onClose();
   };
+  
+
+  const saveActions = {
+    onEditMeal: async (mealData) => {
+      return await handleSubmit(selectedMeal._id, mealData);
+    },
+    onCreateMeal: async (mealData) => {
+      return await handleSubmit(null, mealData);
+    }
+  };
+  
 
   return (
     <div className="sidebar">
@@ -47,10 +44,7 @@ const Sidebar = ({ selectedMeal, onClose, ingredients, onIngredientChange, onDel
         <EditForm 
           meal={selectedMeal} 
           onClose={onClose} 
-          onSave={(mealData) => {
-            handleSubmit(selectedMeal._id, mealData);
-            onSaveMeal(mealData); // Save the meal using the meal save function
-        }}
+          onSave={saveActions} 
           mode={mode}
         />
       )}
@@ -58,13 +52,10 @@ const Sidebar = ({ selectedMeal, onClose, ingredients, onIngredientChange, onDel
         <EditForm 
           meal={{ mealName: '', ingredients: [] }} 
           onClose={onClose} 
-          onSave={(mealData) => {
-            handleSubmit(null, mealData);
-            onSaveMeal(mealData); // Save the meal using the meal save function
-        }} 
+          onSave={saveActions} 
           mode={mode}
         />
-      )}
+      )}  
       {mode === 'grocery' && (
         <GroceryList 
           ingredients={ingredients}
