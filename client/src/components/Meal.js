@@ -1,7 +1,8 @@
 import React from 'react';
 import './Home.css'
 
-const Meal = ({ meal, onEdit, onOpenIngredients }) => {
+const Meal = ({ meal, onEdit, onDelete, onOpenIngredients }) => {
+    
     return (
         <div className="meal-card" onClick={() => onOpenIngredients(meal)}>
             <div className="meal-card-button-container">
@@ -13,7 +14,16 @@ const Meal = ({ meal, onEdit, onOpenIngredients }) => {
                         className="edit-button"
                     >
                         Edit
-                    </button>
+                </button>
+                <button 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete(meal);
+                        }} 
+                        className="edit-button"
+                    >
+                        Delete
+                </button>
             </div>
             <h3 className="meal-title">{meal.mealName}</h3>
         </div>

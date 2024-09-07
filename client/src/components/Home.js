@@ -141,6 +141,31 @@ const Home = ({ signOut }) => {
         }
     };    
 
+    const deleteMeal = async (meal) => {
+
+        try {
+            console.log('deleteMeal function invoked:', meal);
+            const token = localStorage.getItem('token');
+            const response = await fetch(`http://localhost:3001/api/users/meals/${meal._id}`, {
+                method: 'DELETE',  // Change the method to DELETE      
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            setMeals((prevMeals) => prevMeals.filter((m) => m._id !== meal._id));
+        } catch (error) {
+            console.error('Error deleting meal:', error);
+            setError('Failed to delete meal.');
+        }
+    }
+
+
     return (
         <div className="home-container">
 
@@ -164,6 +189,7 @@ const Home = ({ signOut }) => {
                     type={type} 
                     mealsData={meals.filter(meal => meal.mealType.includes(type))} 
                     onEdit={(meal) => openForm(meal, 'edit')} 
+                    onDelete={(meal) => deleteMeal(meal)}
                     onOpenIngredients={(meal) => openForm(meal, 'ingredients')}
                 />
             ))}
