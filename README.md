@@ -9,6 +9,30 @@ Welcome to **Grocery Grid**—your one-stop solution to meal planning and grocer
 - **Weekly Meal Planning:** Plan your meals for the week.
 - **Smart Shopping List:** Generate a shopping list based on your meal plan.
 
+<br>
+
+```mermaid
+graph TD
+    A[User] -->|Interacts<br>with UI| B[React Frontend]
+    B -->|POST login/signup| C[User REST API]
+    C --> D{Authentication}
+    D -->|Invalid User| F[Error Message]
+    D -->|Valid User| E[JWT Token Generated]
+
+    E -->|Token Sent| B
+
+    B -->|CRUD meal data| G[Meal REST API]
+    G --> H[(MongoDB)]
+
+    B -->|Grocery list| K[localStorage Web API]
+    K --> L[(LocalStorage)]
+
+    H --> O[User Dashboard: Show<br>Updated Meal Plan]
+    L --> O
+
+    O -->|Display updated data| B
+```
+
 ## 🛠 Tech Stack
 
 This project is built with the **MERN** stack:
