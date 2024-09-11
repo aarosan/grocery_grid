@@ -43,6 +43,10 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
     setIngredients(ingredients.slice(0, -1));
   };
 
+  const removeIngredient = (index) => {
+    setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
   
@@ -74,72 +78,59 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
 
       <form className="form-container" onSubmit={handleSubmit}>
 
-        <div className="meal-type-container">
 
-          <div className="meal-type-container-title">Meal Type:</div>
+        <div className="meal-name-container">
+          <input 
+              type="text" 
+              placeholder='Meal Name'
+              value={mealName} 
+              onChange={(e) => setMealName(e.target.value)} 
+            />
+        </div>
 
+        <div className="meal-checkboxes-container">        
           <div className='meal-type-checkbox-container'>
             {mealTypes.map((type) => (
-
               <div key={type} className="meal-type-checkboxes">
-
                 <span className="meal-checkbox-title">{type}</span>
-
                 <input
                   type="checkbox"
                   checked={selectedMealTypes.includes(type)}
                   onChange={() => handleMealTypeChange(type)}
                 />
-
               </div>
-
             ))}
           </div>
-
         </div>
 
-
-        <div className="meal-name-container">
-          <label className="meal-name-title">
-            Meal Name:
-            <input 
-              type="text" 
-              value={mealName} 
-              onChange={(e) => setMealName(e.target.value)} 
-            />
-          </label>
-        </div>
-        
         <div className="ingredient-container">
-
           <label className="ingredient-label">Ingredients:</label>
 
-          <div className="ingredient-buttons">
-
-            {mode === 'add' && (
-                <button type="button" onClick={addIngredientInput}>Add Ingredient</button>
-            )}
-            {mode === 'add' && (
-                <button type="button" onClick={removeIngredientInput}>Delete Ingredient</button>
-            )}
-
-          </div>
-
           <div className="ingredient-inputs">
-          {ingredients.map((ingredient, index) => (
-            <input
-              key={index}
-              type="text"
-              value={ingredient}
-              placeholder={`Ingredient ${index + 1}`}
-              onChange={(e) => handleIngredientChange(index, e.target.value)}
-            />
+            {ingredients.map((ingredient, index) => (
+              <div key={index} className="ingredient-item">
+                <input
+                  type="text"
+                  value={ingredient}
+                  placeholder={`Ingredient ${index + 1}`}
+                  onChange={(e) => handleIngredientChange(index, e.target.value)}
+                />
+                <button 
+                  type="button" 
+                  className="delete-ingredient-button" 
+                  onClick={() => removeIngredient(index)}
+                >
+                  Delete
+                </button>
+              </div>
             ))}
-          </div>  
+          </div>
+          <div className="ingredient-buttons">
+            <button type="button" onClick={addIngredientInput}>Add Ingredient</button>
+          </div>
         </div>
        
         <div className="form-buttons">
-
           <button type="button" onClick={onClose}>Home</button>
           <button type="submit">{mode === 'edit' ? 'Update Meal' : 'Add Meal'}</button>
         </div>

@@ -1,6 +1,8 @@
 .home-container {
     padding: 20px;
     border-radius: 5px;
+    background-color: #FFE6C9;
+
 }
 
 /* HEADER */
@@ -62,27 +64,46 @@
 
 /* EDIT FORM */
 
-.edit-form, .form-container, .meal-name, .form-title, .meal-type-title, .meal-type-container-title, .meal-type-container, .meal-checkbox-title, .meal-type-checkbox-container, .meal-name-container, .meal-name-title, .ingredient-container, .ingredient-label, .form-buttons, .ingredient-inputs, .ingredient-buttons {
+.edit-form, .form-container, .meal-name, .form-title, .meal-type-title, .meal-type-container-title, .meal-type-container, .meal-checkbox-title, .meal-name-container, .meal-name-title, .ingredient-container, .ingredient-label, .form-buttons, .ingredient-inputs, .ingredient-buttons {
   background-color: #F6D5BA;
 }
 
+.ingredient-inputs {
+  margin-top: 10px;
+}
+
+.meal-type-checkbox-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+  gap: 10px; /* Adjust the gap between checkboxes */
+  background-color: #F6D5BA;
+}
 
 .meal-type-checkboxes {
-  background-color: #F6D5BA;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: solid .25px rgba(0, 0, 0, 0.75);
   border-radius: 5px;
-  margin: 10px;
   padding: 10px;
+  position: relative; /* Make this container a relative position */
+}
+
+.meal-checkbox-title {
+  flex-grow: 1; /* Allows text to take up remaining space */
+  margin-right: 20px; /* Optional: Adds space between text and checkbox */
+}
+
+.meal-type-checkboxes input[type="checkbox"] {
+  position: absolute; /* Position the checkbox absolutely within the container */
+  left: 30px; /* Moves checkbox 10px from the right border */
 }
 
 .form-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin: 5px;
   padding: 15px;
   gap: 20px
 }
@@ -91,23 +112,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
-  gap: 20px
+  margin-top: 20px;
 }
 
-.meal-name-container, .meal-type-container-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
-  padding: 10px;
-  border: solid .25px rgba(0, 0, 0, 0.4);
-  border-radius: 5px;
+.meal-checkboxes-container {
+  margin-top: 15px; 
+}
+
+.meal-name-container {
+  margin-top: 15px;
 }
 
 .ingredient-container {
+  margin-top: 15px; 
+}
+
+input::placeholder {
+  font-size: 16px; /* Change this value to adjust the size */
+  color: #888; /* Optional: Change color if needed */
+}
+
+.meal-type-container-title {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 10px;
@@ -115,6 +141,8 @@
   border: solid .25px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
 }
+
+
 
 .ingredient-buttons button, .form-buttons button {
   border: solid .25px rgba(0, 0, 0, 0.75);
@@ -242,6 +270,30 @@
 
 .delete-button {
   height: 20px;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ingredient-item input {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.delete-ingredient-button {
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.delete-ingredient-button:hover {
+  background-color: #B44538;
+  color: white;
 }
 
 .ingredient-list-checkbox {
