@@ -1,27 +1,9 @@
-const { connect, connection } = require('mongoose');
+const mongoose = require('mongoose');
+require('dotenv').config(); 
 
-// Define the database name
-const dbName = 'groceryGrid';
+const dbUri = process.env.MONGODB_URI;
 
-// Get the MongoDB URI from environment variables or use a default value
-const mongoHost = process.env.MONGO_HOST 
-const mongoPort = process.env.MONGO_PORT 
-const mongoUser = process.env.MONGO_USER || '';
-const mongoPass = process.env.MONGO_PASS || '';
-const mongoDbName = process.env.MONGO_DB_NAME || dbName;
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-// Construct the MongoDB URI
-let mongoURI = `mongodb://${mongoHost}:${mongoPort}/${mongoDbName}`;
-if (mongoUser && mongoPass) {
-  mongoURI = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}/${mongoDbName}`;
-}
-
-connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('MongoDB connected successfully');
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
-
-module.exports = connection;

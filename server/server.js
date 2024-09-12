@@ -1,10 +1,3 @@
-// Hello and welcome to the MERN_template server side code!
-
-// MongoDB Configuration
-//    - config directory
-//    - models directory
-//    - controllers directory
-
 // Express Configuration
 const express = require('express');
 const cors = require('cors');
