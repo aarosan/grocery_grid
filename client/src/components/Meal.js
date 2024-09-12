@@ -9,21 +9,23 @@ const Meal = ({ meal, onEdit, onDelete, onOpenIngredients }) => {
                 <button 
                         onClick={(e) => {
                             e.stopPropagation();
-                            onEdit(meal);
-                        }} 
-                        className="edit-button"
-                    >
-                        Edit
-                </button>
-                <button 
-                        onClick={(e) => {
-                            e.stopPropagation();
                             onDelete(meal);
                         }} 
                         className="edit-button"
                     >
                         Delete
                 </button>
+
+                <button 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onEdit(meal);
+                        }} 
+                        className="edit-button"
+                    >
+                        Edit
+                </button>
+
             </div>
             <h3 className="meal-title">{meal.mealName}</h3>
         </div>

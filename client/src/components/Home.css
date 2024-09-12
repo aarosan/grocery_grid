@@ -29,6 +29,7 @@
   padding-bottom: 5px;
   border: solid .25px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  background-color: #F6D5BA;
 }
 
 .sign-out-button:hover, .add-meal-button:hover, .view-list-button:hover {
@@ -159,6 +160,8 @@ input::placeholder {
 
 .meal-type-component-title {
   background-color: #FFE6C9;
+  margin: 15px; /* 20px margin on the left and right */
+
 }
 
 .meal-type-container {
@@ -189,17 +192,18 @@ input::placeholder {
   flex-wrap: wrap;
 }
 
+
 .meal-card {
   position: relative;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
-  margin: 0.5rem;
-  width: 150px; /* Adjust the width as needed */
+  width: 15%; /* Occupies one-fifth of the container width */
+  margin: 0 15px; /* 20px margin on the left and right */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: rgba(99, 30, 77, 0.07);
-  border: solid .25px rgba(0, 0, 0, 0.75)
+  border: solid .25px rgba(0, 0, 0, 0.75);
 }
 
 .meal-card:hover {
@@ -219,11 +223,17 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background-color: rgba(99, 30, 77, 0.00);}
+  background-color: rgba(99, 30, 77, 0.00);
+}
+
+
 
 .edit-button, .view-ingredients-button {
+  background-color: #F8D8BA;
   border: solid .25px rgba(0, 0, 0, 0.75);
-  border-radius: 5px;
+  border-radius: 20px;  
+  font-size: 12px;
+  padding: 2px 12px;
 }
 
 .edit-button:hover, .view-ingredients-button:hover {
