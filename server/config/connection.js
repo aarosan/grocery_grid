@@ -3,15 +3,12 @@ const { connect, connection } = require('mongoose');
 // Define the database name
 const dbName = 'groceryGrid';
 
-// Determine if the code is running in a Heroku environment
-const isHeroku = process.env.PORT !== undefined;
-
 // Get the MongoDB URI from environment variables or use a default value
-const mongoHost = isHeroku ? process.env.MONGO_HOST : '127.0.0.1';
-const mongoPort = isHeroku ? process.env.MONGO_PORT : '27017';
-const mongoUser = isHeroku ? process.env.MONGO_USER : '';
-const mongoPass = isHeroku ? process.env.MONGO_PASS : '';
-const mongoDbName = isHeroku ? process.env.MONGO_DB_NAME : dbName;
+const mongoHost = process.env.MONGO_HOST 
+const mongoPort = process.env.MONGO_PORT 
+const mongoUser = process.env.MONGO_USER || '';
+const mongoPass = process.env.MONGO_PASS || '';
+const mongoDbName = process.env.MONGO_DB_NAME || dbName;
 
 // Construct the MongoDB URI
 let mongoURI = `mongodb://${mongoHost}:${mongoPort}/${mongoDbName}`;
