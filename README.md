@@ -131,7 +131,7 @@ We used some amazing SVG illustrations for the signup and login pages. These wer
 
 ### A Special Thanks
 
-We'd like to extend our gratitude to the creator:
+We'd like to extend our gratitude to the creator of the amazing SVG illustrations:
 
 > **mariako.truestory@gmail.com**
 
