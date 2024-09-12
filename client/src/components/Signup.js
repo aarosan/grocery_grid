@@ -44,42 +44,40 @@ const Signup = ({ setToken }) => {
 
       <div className="sign-up-form-container">
         <div className="sign-up-form-container-information">
-          <button onClick={() => navigate('/login')}>Back to Login</button>
           <h2>Signup</h2>
           <form onSubmit={handleSubmit}>
-            <p>
-              First Name
-            </p>
+
             <input
+              placeholder='First Name'
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            <p>
-              Last Name
-            </p>
+
             <input
+              placeholder='Last Name'
               type="text"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-            <p>
-              Username
-            </p>
+
             <input
+              placeholder='Username'
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <p>
-              Password
-            </p>
+
             <input
+              placeholder='Password'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Signup</button>
+            <div className='signup-buttons'>
+              <button type="submit">Signup</button>
+              <button onClick={() => navigate('/login')}>Back to Login</button>
+            </div>
           </form>
         </div>
       </div>

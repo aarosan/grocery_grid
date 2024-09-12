@@ -93,3 +93,8 @@ a {
 a:hover {
     text-decoration: underline; /* Optional: Add underline on hover */
 }
+
+.signup-buttons {
+    display: flex;
+    gap: 10px;
+}
