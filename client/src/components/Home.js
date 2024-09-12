@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './Home.css'; // Import your Home CSS file
 import MealType from './MealType';
 import Sidebar from './Sidebar';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Home = ({ signOut }) => {
     const [meals, setMeals] = useState([]);
@@ -9,6 +12,8 @@ const Home = ({ signOut }) => {
     const [selectedMeal, setSelectedMeal] = useState(null);
     const [groceryList, setGroceryList] = useState([]);
     const [mode, setMode] = useState(null);
+
+    let navigate = useNavigate();
 
     const mealTypes = ['Breakfast', 'Lunch', 'Snack', 'Dinner'];
 
@@ -153,7 +158,6 @@ const Home = ({ signOut }) => {
         }
     };
     
-    
     const deleteMeal = async (meal) => {
 
         try {
@@ -178,6 +182,9 @@ const Home = ({ signOut }) => {
         }
     }
 
+    const mealPlan = async () => {
+        navigate('/plan');
+    }
 
     return (
         <div className="home-container">
@@ -189,6 +196,7 @@ const Home = ({ signOut }) => {
                     </button>
                     <button onClick={() => openForm(null, 'add')} className="add-meal-button">Add Meal</button>
                     <button onClick={() => openForm(null, 'grocery')} className="view-list-button">View List</button>
+                    <button onClick={mealPlan} className="meal-plan-button">Meal Plan</button>
                 </div>
             </div>
 

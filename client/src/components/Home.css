@@ -20,7 +20,7 @@
   width: 100%;
 }
 
-.sign-out-button, .add-meal-button, .view-list-button {
+.sign-out-button, .add-meal-button, .view-list-button, .meal-plan-button {
   font-size: 16px;
   margin: 10px;
   padding-right: 10px;
@@ -32,7 +32,7 @@
   background-color: #F6D5BA;
 }
 
-.sign-out-button:hover, .add-meal-button:hover, .view-list-button:hover {
+.sign-out-button:hover, .add-meal-button:hover, .view-list-button:hover, .meal-plan-button:hover {
   background-color: #B44538;
   color: white;
   cursor: pointer;
