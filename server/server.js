@@ -18,9 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
-// Database connector listener and server initialization
+// Start the server only after the MongoDB connection is open
 db.once('open', () => {
+  console.log('MongoDB connection established successfully');
   app.listen(PORT, () => {
-    console.log(`API server for running at http://localhost:${PORT}!`);
+    console.log(`API server running at http://localhost:${PORT}!`);
   });
+});
+
+// Handle MongoDB connection errors
+db.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
 });
