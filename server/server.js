@@ -12,8 +12,12 @@ const routes = require('./routes');
 // Change the port number
 const port = process.env.PORT || 5000;
 
+const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
+const localhostUrl = 'http://localhost';
+
+
 // Middleware
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: apiUrl }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
@@ -22,7 +26,7 @@ app.use(routes);
 db.once('open', () => {
   console.log('MongoDB connection established successfully');
   app.listen(port, () => {
-    console.log(`API server running at http://localhost:${port}!`);
+    console.log(`API server running at ${clienUrl}!`);
   });
 });
 
