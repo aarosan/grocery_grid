@@ -4,7 +4,7 @@ import { useAuth } from '../App';
 import './Login.css';
 import apples from '../assets/apples.svg';
 
-const apiUrl = process.env.HEROKU_URL || 'http://localhost:3000';
+const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
 
 console.log('API URL:', apiUrl);
 
