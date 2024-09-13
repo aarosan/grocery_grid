@@ -6,7 +6,7 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm start",
     "client": "cd client && npm start",
-    "install": "cd server && npm install && cd ../client && npm install",
+    "install": "npm install && cd server && npm install && cd ../client && npm install",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
