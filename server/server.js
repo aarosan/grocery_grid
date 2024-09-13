@@ -14,6 +14,7 @@ const port = process.env.PORT || 5000;
 
 const clientUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:3000';
 
+console.log('Client URL:', clientUrl);
 // Middleware
 app.use(cors({ origin: clientUrl }));
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +25,7 @@ app.use(routes);
 db.once('open', () => {
   console.log('MongoDB connection established successfully');
   app.listen(port, () => {
-    console.log(`API server running at ${clienUrl}!`);
+    console.log(`API server running at ${clientUrl}!`);
   });
 });
 
