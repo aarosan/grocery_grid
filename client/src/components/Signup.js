@@ -4,6 +4,9 @@ import { useAuth } from '../App';
 import './Login.css';
 import apples from '../assets/apples.svg';
 
+const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
+const localhostUrl = 'http://localhost:5000';
+
 const Signup = ({ setToken }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -19,7 +22,7 @@ const Signup = ({ setToken }) => {
     console.log('Username:', username);
     console.log('Password:', password);
 
-    const response = await fetch('http://localhost:3001/api/users/signup', {
+    const response = await fetch(`${apiUrl}/api/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, lastName, username, password }),

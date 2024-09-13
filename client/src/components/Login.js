@@ -4,6 +4,9 @@ import { useAuth } from "../App";
 import './Login.css';
 import peppers from '../assets/peppers.svg'; // Replace with the path to your SVG file
 
+const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
+const localhostUrl = 'http://localhost:5000';
+
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -12,7 +15,7 @@ const Login = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:3001/api/users/login', {
+    const response = await fetch(`${apiUrl}/api/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),

@@ -4,7 +4,7 @@ import MealType from './MealType';
 import Sidebar from './Sidebar';
 import { useNavigate } from 'react-router-dom';
 
-const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com'
+const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
 const localhostUrl = 'http://localhost:5000';
 
 const Home = ({ signOut }) => {
