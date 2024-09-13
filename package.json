@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm start",
-    "client": "cd client && npm start",
+    "client": "cd client && PORT=3001 && npm start",
     "install": "cd server && npm install && cd ../client && npm install",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },

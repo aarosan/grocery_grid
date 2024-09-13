@@ -12,7 +12,7 @@ const routes = require('./routes');
 // Change the port number
 const port = process.env.PORT || 5000;
 
-const clientUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:3000';
+const clientUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:3001';
 
 console.log('Client URL:', clientUrl);
 // Middleware
