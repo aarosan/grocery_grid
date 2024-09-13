@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './Home.css';
+import MealTypeCheckboxes from './MealTypeCheckboxes';
+import IngredientList from './MealFormIngredientList';
+import '../style/Home.css'
 
 
-const EditForm = ({ meal, onClose, onSave, mode }) => {
+const MealForm = ({ meal, onClose, onSave, mode }) => {
   console.log("received meal:", meal);
   const [mealName, setMealName] = useState(meal.mealName || '');
   const [ingredients, setIngredients] = useState(meal.ingredients || []);
@@ -11,15 +13,10 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
   const mealTypes = ['Breakfast', 'Lunch', 'Snack', 'Dinner'];
 
   useEffect(() => {
-    console.log("useEffect", meal);
     if (mode === 'edit' && meal.mealType) {
       setSelectedMealTypes(meal.mealType);
     }
   }, [meal, mode]);
-
-  useEffect(() => {
-    console.log("Updated selectedMealTypes", selectedMealTypes);
-  }, [selectedMealTypes]);
 
   const handleMealTypeChange = (mealType) => {
     setSelectedMealTypes((prevTypes) =>
@@ -37,10 +34,6 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
 
   const addIngredientInput = () => {
     setIngredients([...ingredients, '']);
-  };
-
-  const removeIngredientInput = () => {
-    setIngredients(ingredients.slice(0, -1));
   };
 
   const removeIngredient = (index) => {
@@ -89,42 +82,21 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
         </div>
 
         <div className="meal-checkboxes-container">        
-          <div className='meal-type-checkbox-container'>
-            {mealTypes.map((type) => (
-              <div key={type} className="meal-type-checkboxes">
-                <span className="meal-checkbox-title">{type}</span>
-                <input
-                  type="checkbox"
-                  checked={selectedMealTypes.includes(type)}
-                  onChange={() => handleMealTypeChange(type)}
-                />
-              </div>
-            ))}
-          </div>
+          <MealTypeCheckboxes 
+            mealTypes={mealTypes} 
+            selectedMealTypes={selectedMealTypes} 
+            onMealTypeChange={handleMealTypeChange} 
+          />
         </div>
 
         <div className="ingredient-container">
-          <label className="ingredient-label">Ingredients:</label>
 
-          <div className="ingredient-inputs">
-            {ingredients.map((ingredient, index) => (
-              <div key={index} className="ingredient-item">
-                <input
-                  type="text"
-                  value={ingredient}
-                  placeholder={`Ingredient ${index + 1}`}
-                  onChange={(e) => handleIngredientChange(index, e.target.value)}
-                />
-                <button 
-                  type="button" 
-                  className="delete-ingredient-button" 
-                  onClick={() => removeIngredient(index)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-          </div>
+        <IngredientList
+          ingredients={ingredients}
+          onIngredientChange={handleIngredientChange}
+          onRemoveIngredient={removeIngredient}
+        />
+        
           <div className="ingredient-buttons">
             <button type="button" onClick={addIngredientInput}>Add Ingredient</button>
           </div>
@@ -140,4 +112,4 @@ const EditForm = ({ meal, onClose, onSave, mode }) => {
   );
 };
 
-export default EditForm;
+export default MealForm;

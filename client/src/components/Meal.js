@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css'
+import '../style/Home.css'
 
 const Meal = ({ meal, onEdit, onDelete, onOpenIngredients }) => {
     

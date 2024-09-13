@@ -1,6 +1,6 @@
 import React from 'react';
 import Meal from './Meal';
-import './Home.css';
+import '../style/Home.css'
 
 const MealType = ({ type, mealsData, onEdit, onDelete, onOpenIngredients }) => {
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../App';
-import './Login.css';
+import '../style/Login.css';
 import apples from '../assets/apples.svg';
 
 const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';

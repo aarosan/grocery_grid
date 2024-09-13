@@ -1,49 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css'; // Import your Home CSS file
-import MealType from './MealType';
-import Sidebar from './Sidebar';
+import '../style/Home.css'
+import MealType from '../components/MealType';
+import Sidebar from '../components/Sidebar';
 import { useNavigate } from 'react-router-dom';
+import { useMeals } from '../hooks/useMeals';
+import { useGroceryList } from '../hooks/useGroceryList';
 
 const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
 
 const Home = ({ signOut }) => {
-    const [meals, setMeals] = useState([]);
-    const [error, setError] = useState(null);
+    const { meals, error, setMeals } = useMeals();
+    const { groceryList, loadGroceryList, addIngredientsToGroceryList, handleIngredientChange, deleteIngredient, saveGroceryList } = useGroceryList();
+
     const [selectedMeal, setSelectedMeal] = useState(null);
-    const [groceryList, setGroceryList] = useState([]);
     const [mode, setMode] = useState(null);
 
-    let navigate = useNavigate();
-
+    const navigate = useNavigate();
     const mealTypes = ['Breakfast', 'Lunch', 'Snack', 'Dinner'];
 
     useEffect(() => {
-        fetchMeals();
         loadGroceryList();
-    }, []);
-
-    const fetchMeals = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            const response = await fetch(`${apiUrl}/api/users/meals`, {
-                method: 'GET',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const mealsData = await response.json();
-            setMeals(mealsData);
-        } catch (error) {
-            console.error('Error fetching meals:', error);
-            setError('Failed to fetch meals.');
-        }
-    };
+    }, [loadGroceryList]);
 
     const openForm = (meal = null, formMode) => {
         setSelectedMeal(meal);
@@ -56,50 +33,6 @@ const Home = ({ signOut }) => {
     const closeSidebar = () => {
         setMode(null);
         setSelectedMeal(null);
-    };
-
-    const loadGroceryList = () => {
-        const storedList = JSON.parse(localStorage.getItem('groceryList')) || [];
-        const formattedGroceryList = storedList.map(item => ({
-            name: item.name || item,
-            checked: item.checked || false // Set default checked to false
-        }));
-        setGroceryList(formattedGroceryList);
-    };
-
-// Function to delete an ingredient from the grocery list
-    const deleteIngredient = (ingredientName) => {
-        const updatedGroceryList = groceryList.filter(item => item.name !== ingredientName);
-        setGroceryList(updatedGroceryList);
-        localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList));
-    };
-
-    const addIngredientsToGroceryList = (selectedIngredients) => {
-        const newIngredients = selectedIngredients.filter(ingredient => 
-            !groceryList.some(item => item.name === ingredient) // Avoid duplicates
-        ).map(ingredient => ({ name: ingredient, checked: false })); // Set default checked to false
-    
-        const updatedGroceryList = [...groceryList, ...newIngredients];
-        setGroceryList(updatedGroceryList);
-        localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList)); // Save to local storage
-    };
-
-    // Modify the saveGroceryList function if necessary to utilize the update function
-    const saveGroceryList = () => {
-        // Save the updated grocery list (this can also be done in handleIngredientChange)
-        const updatedGroceryList = groceryList.map(item => ({ name: item.name, checked: item.checked }));
-        localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList));
-        closeSidebar();
-    };
-
-    const handleIngredientChange = (ingredientName) => {
-        const updatedGroceryList = groceryList.map(item => 
-            item.name === ingredientName 
-                ? { ...item, checked: !item.checked } 
-                : item
-        );
-        setGroceryList(updatedGroceryList);
-        localStorage.setItem('groceryList', JSON.stringify(updatedGroceryList)); // Save updated list to local storage
     };
 
     const createMeal = async (mealData) => {
@@ -123,7 +56,6 @@ const Home = ({ signOut }) => {
             closeSidebar();
         } catch (error) {
             console.error('Error creating meal:', error);
-            setError('Failed to create meal.');
         }
     };
     
@@ -154,7 +86,6 @@ const Home = ({ signOut }) => {
           closeSidebar();
         } catch (error) {
           console.error('Error updating meal:', error);
-          setError('Failed to update meal.');
         }
     };
     
@@ -178,7 +109,6 @@ const Home = ({ signOut }) => {
             setMeals((prevMeals) => prevMeals.filter((m) => m._id !== meal._id));
         } catch (error) {
             console.error('Error deleting meal:', error);
-            setError('Failed to delete meal.');
         }
     }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const IngredientList = ({ selectedMeal, onClose, onSave }) => {
+const CheckboxIngredientList = ({ selectedMeal, onClose, onSave }) => {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
 
   useEffect(() => {
@@ -51,4 +51,4 @@ const IngredientList = ({ selectedMeal, onClose, onSave }) => {
   );
 };
 
-export default IngredientList;
+export default CheckboxIngredientList;

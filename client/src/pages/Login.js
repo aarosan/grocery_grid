@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from "../App";
-import './Login.css';
+import '../style/Login.css';
 import peppers from '../assets/peppers.svg'; // Replace with the path to your SVG file
 
 const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
