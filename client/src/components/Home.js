@@ -4,7 +4,8 @@ import MealType from './MealType';
 import Sidebar from './Sidebar';
 import { useNavigate } from 'react-router-dom';
 
-
+const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com'
+const localhostUrl = 'http://localhost:5000';
 
 const Home = ({ signOut }) => {
     const [meals, setMeals] = useState([]);
@@ -25,7 +26,7 @@ const Home = ({ signOut }) => {
     const fetchMeals = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3001/api/users/meals', {
+            const response = await fetch(`${apiUrl}/api/users/meals`, {
                 method: 'GET',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -105,7 +106,7 @@ const Home = ({ signOut }) => {
     const createMeal = async (mealData) => {
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch('http://localhost:3001/api/users/meals', {
+            const response = await fetch(`${apiUrl}/api/users/meals`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -134,7 +135,7 @@ const Home = ({ signOut }) => {
         const token = localStorage.getItem('token');
         
         try {
-          const response = await fetch(`http://localhost:3001/api/users/meals/${_id}`, {
+          const response = await fetch(`${apiUrl}/api/users/meals/${_id}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -163,7 +164,7 @@ const Home = ({ signOut }) => {
         try {
             console.log('deleteMeal function invoked:', meal);
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:3001/api/users/meals/${meal._id}`, {
+            const response = await fetch(`${apiUrl}/api/users/meals/${meal._id}`, {
                 method: 'DELETE',  // Change the method to DELETE      
                 headers: {
                     'Content-Type': 'application/json',
