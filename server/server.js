@@ -10,7 +10,7 @@ const db = require('./config/connection');
 const routes = require('./routes');
 
 // Change the port number
-const PORT = process.env.PORT || 3001;
+const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({ origin: 'http://localhost:3000' }));
@@ -21,8 +21,8 @@ app.use(routes);
 // Start the server only after the MongoDB connection is open
 db.once('open', () => {
   console.log('MongoDB connection established successfully');
-  app.listen(PORT, () => {
-    console.log(`API server running at http://localhost:${PORT}!`);
+  app.listen(port, () => {
+    console.log(`API server running at http://localhost:${port}!`);
   });
 });
 
