@@ -10,7 +10,7 @@ const db = require('./config/connection');
 const routes = require('./routes');
 
 // Change the port number
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({ origin: 'http://localhost:3000' }));
