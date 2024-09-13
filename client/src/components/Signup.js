@@ -4,7 +4,7 @@ import { useAuth } from '../App';
 import './Login.css';
 import apples from '../assets/apples.svg';
 
-const apiUrl = process.env.HEROKU_URL || 'http://localhost:5000';
+const apiUrl = process.env.HEROKU_URL || 'http://localhost:3000';
 
 const Signup = ({ setToken }) => {
   const [firstName, setFirstName] = useState('');

@@ -4,7 +4,7 @@ import { useAuth } from "../App";
 import './Login.css';
 import peppers from '../assets/peppers.svg'; // Replace with the path to your SVG file
 
-const apiUrl = process.env.HEROKU_URL || 'http://localhost:5000';
+const apiUrl = process.env.HEROKU_URL || 'http://localhost:3000';
 
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');

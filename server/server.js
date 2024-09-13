@@ -12,12 +12,10 @@ const routes = require('./routes');
 // Change the port number
 const port = process.env.PORT || 5000;
 
-const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
-const localhostUrl = 'http://localhost';
-
+const clientUrl = process.env.HEROKU_URL || 'http://localhost:3000';
 
 // Middleware
-app.use(cors({ origin: apiUrl }));
+app.use(cors({ origin: clientUrl }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);

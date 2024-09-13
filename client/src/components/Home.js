@@ -4,7 +4,7 @@ import MealType from './MealType';
 import Sidebar from './Sidebar';
 import { useNavigate } from 'react-router-dom';
 
-const apiUrl = process.env.HEROKU_URL || 'http://localhost:5000';
+const apiUrl = process.env.HEROKU_URL || 'http://localhost:3000';
 
 const Home = ({ signOut }) => {
     const [meals, setMeals] = useState([]);
