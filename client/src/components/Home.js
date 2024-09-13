@@ -4,8 +4,7 @@ import MealType from './MealType';
 import Sidebar from './Sidebar';
 import { useNavigate } from 'react-router-dom';
 
-const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
-const localhostUrl = 'http://localhost:5000';
+const apiUrl = process.env.HEROKU_URL || 'http://localhost:5000';
 
 const Home = ({ signOut }) => {
     const [meals, setMeals] = useState([]);

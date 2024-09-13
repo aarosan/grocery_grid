@@ -4,8 +4,7 @@ import { useAuth } from '../App';
 import './Login.css';
 import apples from '../assets/apples.svg';
 
-const apiUrl = 'https://grocery-grid-fffe5a21c358.herokuapp.com';
-const localhostUrl = 'http://localhost:5000';
+const apiUrl = process.env.HEROKU_URL || 'http://localhost:5000';
 
 const Signup = ({ setToken }) => {
   const [firstName, setFirstName] = useState('');
