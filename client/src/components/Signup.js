@@ -6,6 +6,8 @@ import apples from '../assets/apples.svg';
 
 const apiUrl = process.env.HEROKU_URL || 'http://localhost:3000';
 
+console.log('API URL:', apiUrl);
+
 const Signup = ({ setToken }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
