@@ -28,7 +28,7 @@ const Signup = ({ setToken }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, lastName, username, password }),
     });
-
+    console.log('Response:', response);
     if (response.ok) {
       const data = await response.json();
       console.log('Signup successful, token:', data.token); // Debugging line

@@ -4,11 +4,13 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'your_jwt_secret';
 
 const signup = async (req, res) => {
+  console.log('signup function invoked');
   try {
     const { firstName, lastName, username, password } = req.body;
     console.log('Request body:', req.body);
     const hashedPassword = await bcrypt.hash(password, 8);
     const newUser = new User({ firstName, lastName, username, password: hashedPassword });
+    console.log('New  user:', newUser)
     await newUser.save();
     
     // Generate JWT token
