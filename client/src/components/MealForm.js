@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MealTypeCheckboxes from './MealTypeCheckboxes';
-import IngredientList from './MealFormIngredientList';
+import MealFormIngredientList from './MealFormIngredientList';
 import '../style/Home.css'
 
 
@@ -91,7 +91,7 @@ const MealForm = ({ meal, onClose, onSave, mode }) => {
 
         <div className="ingredient-container">
 
-        <IngredientList
+        <MealFormIngredientList
           ingredients={ingredients}
           onIngredientChange={handleIngredientChange}
           onRemoveIngredient={removeIngredient}

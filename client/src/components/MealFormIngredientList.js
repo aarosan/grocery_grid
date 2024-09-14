@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IngredientList = ({ ingredients, onIngredientChange, onRemoveIngredient }) => (
+const MealFormIngredientList = ({ ingredients, onIngredientChange, onRemoveIngredient }) => (
     <div className="ingredient-container">
         <label className="ingredient-label">Ingredients:</label>
         <div className="ingredient-inputs">
@@ -25,4 +25,4 @@ const IngredientList = ({ ingredients, onIngredientChange, onRemoveIngredient })
     </div>
 );
 
-export default IngredientList;
+export default MealFormIngredientList;

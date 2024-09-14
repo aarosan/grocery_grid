@@ -6,7 +6,6 @@ const router = require('express').Router();
 // router/api import
 const apiRoutes = require('./api');
 
-// URL is now http://localhost:3001/api
 router.use('/api', apiRoutes);
 
 router.use((req, res) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import MealForm from './MealForm';
 import GroceryList from './GroceryList';
-import CheckboxIngredientList from './CheckboxIngredientList';
+import MealIngredientList from './MealIngredientList';
 import { useAuth } from '../App'; // Importing useAuth
 
 const Sidebar = ({ 
@@ -47,8 +47,8 @@ const Sidebar = ({
     />
   );
 
-  const renderCheckboxIngredientList = () => (
-    <CheckboxIngredientList
+  const renderMealIngredientList = () => (
+    <MealIngredientList
       selectedMeal={selectedMeal}
       onClose={onClose}
       onSave={onAddIngredients}
@@ -61,7 +61,7 @@ const Sidebar = ({
     <div className="sidebar">
       {mode === 'edit' || mode === 'add' ? renderMealForm() : null}
       {mode === 'grocery' ? renderGroceryList() : null}
-      {mode === 'ingredients' ? renderCheckboxIngredientList() : null}
+      {mode === 'ingredients' ? renderMealIngredientList() : null}
     </div>
   );
 };
