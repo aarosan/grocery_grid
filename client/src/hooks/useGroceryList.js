@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export const useGroceryList = () => {
     const [groceryList, setGroceryList] = useState([]);
 
-    const loadGroceryList = () => {
+    const loadGroceryList = useCallback(() => {
         const storedList = JSON.parse(localStorage.getItem('groceryList')) || [];
         const formattedGroceryList = storedList.map(item => ({
             name: item.name || item,
             checked: item.checked || false
         }));
         setGroceryList(formattedGroceryList);
-    };
+    }, []);
 
     const addIngredientsToGroceryList = (selectedIngredients) => {
         const newIngredients = selectedIngredients.filter(ingredient =>
