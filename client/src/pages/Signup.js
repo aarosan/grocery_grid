@@ -6,8 +6,6 @@ import apples from '../assets/apples.svg';
 
 const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
 
-console.log('API URL:', apiUrl);
-
 const Signup = ({ setToken }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -18,24 +16,17 @@ const Signup = ({ setToken }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('First Name:', firstName);
-    console.log('Last Name:', lastName);
-    console.log('Username:', username);
-    console.log('Password:', password);
 
     const response = await fetch(`${apiUrl}/api/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, lastName, username, password }),
     });
-    console.log('Response:', response);
     if (response.ok) {
       const data = await response.json();
-      console.log('Signup successful, token:', data.token); // Debugging line
       signIn(data.token);
       navigate('/'); // Navigate to home on successful signup
     } else {
-      console.error('Signup failed'); // Debugging line
       alert('Signup failed');
     }
   };

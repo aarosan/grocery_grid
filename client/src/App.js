@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -10,8 +10,6 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
-
-  console.log('AuthProvider rendered, token:', token); // Debugging line
 
   const signIn = (newToken) => {
     setToken(newToken);

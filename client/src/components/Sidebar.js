@@ -2,31 +2,31 @@ import React from 'react';
 import MealForm from './MealForm';
 import GroceryList from './GroceryList';
 import MealIngredientList from './MealIngredientList';
-import { useAuth } from '../App'; // Importing useAuth
+// import { useAuth } from '../App'; // Importing useAuth
 
 const Sidebar = ({ 
   selectedMeal, onClose, ingredients, onIngredientChange, onDeleteIngredient, onCreateMeal, onEditMeal, onSaveGroceryList, onAddIngredients, mode, onSave
 }) => {
-  const { token } = useAuth(); // Get the token from context
+  // const { token } = useAuth(); // Get the token from context
 
-  const handleSubmit = async (mealId, mealData) => {
-    console.log('Submit clicked');
-    console.log('mealData:', mealData);
-    console.log('mealId:', mealId);
+  // const handleSubmit = async (mealId, mealData) => {
+  //   console.log('Submit clicked');
+  //   console.log('mealData:', mealData);
+  //   console.log('mealId:', mealId);
   
-    try {
+  //   try {
   
-      if (mode === 'edit' && mealId) {
-        await onEditMeal(mealData);
-      } else {
-        await onCreateMeal(mealData);
-      }
+  //     if (mode === 'edit' && mealId) {
+  //       await onEditMeal(mealData);
+  //     } else {
+  //       await onCreateMeal(mealData);
+  //     }
   
-    } catch (error) {
-      console.error('Error in handleSubmit:', error);
-    }
-    onClose();
-  };
+  //   } catch (error) {
+  //     console.error('Error in handleSubmit:', error);
+  //   }
+  //   onClose();
+  // };
   
   const renderMealForm = () => (
     <MealForm

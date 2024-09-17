@@ -22,11 +22,9 @@ const Login = ({ setToken }) => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log('Login successful, token:', data.token); // Debugging line
       signIn(data.token);
       navigate('/'); // Navigate to home on successful login
     } else {
-      console.error('Login failed'); // Debugging line
       alert('Login failed');
     }
   };

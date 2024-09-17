@@ -5,7 +5,6 @@ import '../style/Home.css'
 
 
 const MealForm = ({ meal, onClose, onSave, mode }) => {
-  console.log("received meal:", meal);
   const [mealName, setMealName] = useState(meal.mealName || '');
   const [ingredients, setIngredients] = useState(meal.ingredients || []);
   const [selectedMealTypes, setSelectedMealTypes] = useState([]);
@@ -43,7 +42,6 @@ const MealForm = ({ meal, onClose, onSave, mode }) => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
   
-    console.log('Submit clicked');
     const mealData = { mealName, ingredients, mealType: selectedMealTypes };
   
     try {
@@ -55,7 +53,7 @@ const MealForm = ({ meal, onClose, onSave, mode }) => {
         await onSave.onCreateMeal(mealData);
       }
     } catch (error) {
-      console.error('Error in handleSubmit:', error);
+      console.error('Failed to save meal:', error);
     }
   
     onClose(); // Close the modal or panel after saving
