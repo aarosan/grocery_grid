@@ -1,0 +1,110 @@
+body {
+    background-color: #FFE6C9;
+}
+
+.plan-container {
+    padding: 20px;
+  }
+
+.plan-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 10px;
+}
+
+.day-column {
+display: grid;
+grid-template-rows: auto repeat(4, 1fr);
+gap: 10px;
+border: 1px solid #ddd;
+padding: 10px;
+}
+
+.day-header {
+font-weight: bold;
+text-align: center;
+}
+
+.meal-box {
+border: 1px solid #ddd;
+border-radius: 5px;
+padding: 10px;
+cursor: pointer;
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+min-height: 50px;
+cursor: pointer;
+}
+
+/* Define colors for different meal types */
+.meal-box.breakfast:hover {
+background-color: rgb(217, 131, 162, .5); 
+}
+
+.meal-box.breakfast:active {
+background-color: rgb(217, 131, 162, .9);
+color: white;
+}
+
+.meal-box.lunch:hover {
+background-color: rgb(159, 217, 131, .5);
+}
+
+.meal-box.lunch:active {
+background-color: rgb(159, 217, 131, .9);
+color: white;
+}
+
+.meal-box.snack:hover {
+background-color: rgb(131, 207, 217, .5); 
+}
+
+.meal-box.snack:active {
+background-color: rgb(131, 207, 217, .9); 
+color: white;
+}
+
+.meal-box.dinner:hover {
+background-color: rgb(217, 208, 131, .5);
+}
+
+.meal-box.dinner:active {
+background-color: rgb(217, 208, 131, .9);
+color: white;
+}
+
+.buttons {
+display: flex;
+justify-content: space-between;
+margin-top: 10px;
+}
+
+.meal-selector {
+position: fixed;
+top: 20%;
+left: 50%;
+transform: translate(-50%, -20%);
+padding: 20px;
+background-color: white;
+border: 1px solid #ccc;
+z-index: 100;
+}
+
+.meal-selector h3 {
+margin-bottom: 10px;
+}
+
+.meal-selector button {
+margin: 5px;
+}
+
+.meal-day-buttons {
+display: flex;
+justify-content: space-between;
+}
+
+.meal-type-name {
+text-align: center;
+}
