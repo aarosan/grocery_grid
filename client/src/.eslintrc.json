@@ -7,6 +7,13 @@
       "no-warning-comments": "warn",
       "no-console": "warn",
       "no-unused-vars": "warn"
+    },
+    "env": {
+      "production": {
+        "rules": {
+          "no-console": "off",
+          "no-debugger": "off"
+        }
+      }
     }
   }
-  

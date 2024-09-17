@@ -59,7 +59,7 @@ const Home = ({ signOut }) => {
             }));
             closeSidebar();
         } catch (error) {
-            console.error('Error creating meal:', error);
+            throw new Error(`Meal creation failed: ${error.message}`);
         }
     };
 
@@ -88,7 +88,7 @@ const Home = ({ signOut }) => {
           }));
           closeSidebar();
         } catch (error) {
-          console.error('Error updating meal:', error);
+            throw new Error(`Meal update failed: ${error.message}`);
         }
     };
     
@@ -112,7 +112,7 @@ const Home = ({ signOut }) => {
                 [meal.mealType]: prevMeals[meal.mealType].filter((m) => m._id !== meal._id)
             }));
         } catch (error) {
-            console.error('Error deleting meal:', error);
+            throw new Error(`Meal deletion failed: ${error.message}`);
         }
     }
 

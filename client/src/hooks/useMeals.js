@@ -38,7 +38,7 @@ export const useMeals = () => {
     
                 setMeals(categorizedMeals);
             } catch (error) {
-                console.error('Error fetching meals:', error);
+                throw new Error(`Failed to fetch meals: ${error.message}`);
                 setError('Failed to fetch meals.');
             }
         };

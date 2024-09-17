@@ -12,8 +12,8 @@ const routes = require('./routes');
 // Change the port number
 const port = process.env.PORT || 5000;
 
-const clientUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:3000';
-const apiUrl = process.env.REACT_APP_HEROKU_API_URL || 'http://localhost:5000';
+const clientUrl = process.env.REACT_APP_NETLIFY_URL || 'http://localhost:3000';
+const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
 
 console.log('Client URL:', clientUrl);
 // Middleware
