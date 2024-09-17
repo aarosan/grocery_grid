@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'your_jwt_secret';
+require('dotenv').config();
 
 const signup = async (req, res) => {
   console.log('signup function invoked');
@@ -14,7 +14,7 @@ const signup = async (req, res) => {
     await newUser.save();
     
     // Generate JWT token
-    const token = jwt.sign({ userId: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     
     // Return token as JSON
     res.status(201).json({ token });
@@ -34,7 +34,7 @@ const login = async (req, res) => {
   if (!isMatch) return res.status(401).send('Invalid credentials');
 
   // Sign token with userId in payload
-  const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
   res.status(200).json({ token });
 };
 
