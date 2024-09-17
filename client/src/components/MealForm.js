@@ -53,7 +53,7 @@ const MealForm = ({ meal, onClose, onSave, mode }) => {
         await onSave.onCreateMeal(mealData);
       }
     } catch (error) {
-      console.error('Failed to save meal:', error);
+      throw new Error(`Meal processing failed: ${error.message}`);
     }
   
     onClose(); // Close the modal or panel after saving
