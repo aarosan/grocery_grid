@@ -98,3 +98,33 @@ a:hover {
     display: flex;
     gap: 10px;
 }
+
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+
+}
+
+
+/* Small Devices */
+@media (max-width: 768px) {
+
+}
+
+/* Medium Devices */
+@media (max-width: 1024px) {
+    .svg-container img {
+        width: 90%; /* Reduce size to 30% of the original */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 100%;
+    }
+
+    .svg-container {
+        flex: 0 0 40%; /* 60% width for the SVG */
+    }
+
+    .login-form-container, .sign-up-form-container {
+        flex: 0 0 60%; /* 40% width for the login form */
+    }
+}
+

@@ -143,8 +143,6 @@ input::placeholder {
   border-radius: 5px;
 }
 
-
-
 .ingredient-buttons button, .form-buttons button {
   border: solid .25px rgba(0, 0, 0, 0.75);
   border-radius: 5px;
@@ -192,14 +190,13 @@ input::placeholder {
   flex-wrap: wrap;
 }
 
-
 .meal-card {
   position: relative;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
   width: 15%; /* Occupies one-fifth of the container width */
-  margin: 0 15px; /* 20px margin on the left and right */
+  margin: 5px 15px; /* 20px margin on the left and right */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: rgba(99, 30, 77, 0.07);
@@ -226,8 +223,6 @@ input::placeholder {
   background-color: rgba(99, 30, 77, 0.00);
 }
 
-
-
 .edit-button, .view-ingredients-button {
   background-color: #F8D8BA;
   border: solid .25px rgba(0, 0, 0, 0.75);
@@ -242,7 +237,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-  /* GROCERY/INGREDIENT LIST */
+/* GROCERY/INGREDIENT LIST */
 
 .grocery-list-title, .grocery-list, .ingredient-loop, .ingredient-loop-title, .grocery-list-buttons, .ingredient-checkboxes, .ingredients-list-buttons, .ingredients-list {
   background-color: #F6D5BA;
@@ -321,4 +316,44 @@ input::placeholder {
   margin-right: 50px;
   width: 2000px;
   background-color: #F6D5BA;
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .meal-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .meal-card {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 85%; 
+    margin: 5px 15px; /* 20px margin on the left and right */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: rgba(99, 30, 77, 0.07);
+    border: solid .25px rgba(0, 0, 0, 0.75);
+  }
+
+  .meal-title {
+    margin: 0;
+  }
+}
+
+/* Small Devices */
+@media (max-width: 768px) {
+
+}
+
+/* Medium Devices */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 400px;
+  }
 }

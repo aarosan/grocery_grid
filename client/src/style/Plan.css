@@ -1,110 +1,190 @@
 body {
-    background-color: #FFE6C9;
+  background-color: #FFE6C9;
 }
 
 .plan-container {
-    padding: 20px;
-  }
+  width: 100%; /* Ensures it takes the full width of its parent */
+  margin: 0 auto; /* Center the container */
+}
 
 .plan-grid {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding-top: 20px;
+  width: 100%;
 }
 
 .day-column {
-display: grid;
-grid-template-rows: auto repeat(4, 1fr);
-gap: 10px;
-border: 1px solid #ddd;
-padding: 10px;
+  display: grid;
+  grid-template-rows: auto repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
 }
 
 .day-header {
-font-weight: bold;
-text-align: center;
+  text-align: center;
+  font-size: 30px;
 }
 
 .meal-box {
-border: 1px solid #ddd;
-border-radius: 5px;
-padding: 10px;
-cursor: pointer;
-position: relative;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-min-height: 50px;
-cursor: pointer;
+  border: solid .25px rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+  background-color: rgba(99, 30, 77, 0.07);
+  padding: 40px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 50px;
+  cursor: pointer;
 }
 
 /* Define colors for different meal types */
 .meal-box.breakfast:hover {
-background-color: rgb(217, 131, 162, .5); 
+  background-color: rgb(217, 131, 162, .5); 
 }
 
 .meal-box.breakfast:active {
-background-color: rgb(217, 131, 162, .9);
-color: white;
+  background-color: rgb(217, 131, 162, .9);
+  color: white;
 }
 
 .meal-box.lunch:hover {
-background-color: rgb(159, 217, 131, .5);
+  background-color: rgb(159, 217, 131, .5);
 }
 
 .meal-box.lunch:active {
-background-color: rgb(159, 217, 131, .9);
-color: white;
+  background-color: rgb(159, 217, 131, .9);
+  color: white;
 }
 
 .meal-box.snack:hover {
-background-color: rgb(131, 207, 217, .5); 
+  background-color: rgb(131, 207, 217, .5); 
 }
 
 .meal-box.snack:active {
-background-color: rgb(131, 207, 217, .9); 
-color: white;
+  background-color: rgb(131, 207, 217, .9); 
+  color: white;
 }
 
 .meal-box.dinner:hover {
-background-color: rgb(217, 208, 131, .5);
+  background-color: rgb(217, 208, 131, .5);
 }
 
 .meal-box.dinner:active {
-background-color: rgb(217, 208, 131, .9);
-color: white;
+  background-color: rgb(217, 208, 131, .9);
+  color: white;
+}
+
+.home-link {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (if needed) */
+  margin-bottom: 20px; /* Add some space below the header */
 }
 
 .buttons {
-display: flex;
-justify-content: space-between;
-margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .meal-selector {
-position: fixed;
-top: 20%;
-left: 50%;
-transform: translate(-50%, -20%);
-padding: 20px;
-background-color: white;
-border: 1px solid #ccc;
-z-index: 100;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  padding: 20px;
+  background-color: #F6D5BA;
+  border: 2px solid #B44538;
+  border-radius: 25px;
+  z-index: 100;
 }
 
-.meal-selector h3 {
-margin-bottom: 10px;
-}
-
-.meal-selector button {
-margin: 5px;
+.meal-plan-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .meal-day-buttons {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: center;
+}
+
+.meal-plan-buttons button, .meal-plan-navigation button, .meal-day-buttons button {
+  margin: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid .25px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: #FFE6C9;
+}
+
+.meal-plan-buttons button:hover, .meal-plan-navigation button:hover, .meal-day-buttons button:hover {
+  background-color: #B44538;
+  color: white;
+  cursor: pointer;
+  border: .5px solid #B44538;
+}
+
+.meal-plan-buttons button:active, .meal-plan-navigation button:active, .meal-day-buttons button:active {
+  background-color: #ff7768;
+  color: white;
+  border: .5px solid #B44538;
+}
+
+.meal-selector h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.meal-selector button {
+  margin: 5px;
+}
+
+.meal-day-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 .meal-type-name {
-text-align: center;
+  text-align: center;
+  font-size: 24px;
 }
+
+.home-link {
+  background-color: #FFE6C9;
+}
+.home-button {
+  font-size: 16px;
+  margin: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: solid .25px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: #F6D5BA;
+}
+
+
+
+/* Small Devices */
+@media (min-width: 481px) and (max-width: 768px) {
+  .plan-grid {
+    grid-template-columns: repeat(3, 1fr); /* Change to 3 columns for small devices */
+  }
+}
+
+@media (min-width: 769px) {
+  .plan-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Use auto-fit for larger devices */
+  }
+}
+

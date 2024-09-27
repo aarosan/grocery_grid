@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMeals } from '../hooks/useMeals';
 import "../style/Plan.css";
+import { Link } from "react-router-dom";
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const mealTypes = ["Breakfast", "Lunch", "Snack", "Dinner"];
@@ -28,6 +29,7 @@ const Plan = () => {
 
   const handleMealClick = (day, mealType) => {
     setEditing({ day, mealType });
+    console.log('Editing state set:', { day, mealType });
   };
 
   const handleSaveMeal = (meal) => {
@@ -43,6 +45,7 @@ const Plan = () => {
   };
 
   const handleClearMeal = (day, mealType) => {
+
     setMealPlan((prevPlan) => ({
       ...prevPlan,
       [day]: {
@@ -50,6 +53,10 @@ const Plan = () => {
         [mealType]: "",
       },
     }));
+
+    setEditing({ day: null, mealType: null });
+    console.log('Editing state cleared:', editing); // Check if editing is cleared
+
   };
 
   const handleCloseModal = () => {
@@ -58,6 +65,13 @@ const Plan = () => {
 
   return (
     <div className="plan-container">
+      <div className="meal-plan-header-container">
+        <div className="meal-plan-header-actions">
+          <Link className="home-link" to="/">
+            <button className="home-button">Home</button>
+          </Link>
+        </div>
+      </div>
       <div className="plan-grid">
         {daysOfWeek.map((day) => (
           <div key={day} className="day-column">
@@ -73,11 +87,12 @@ const Plan = () => {
                 </div>
                 {mealPlan[day][mealType] && (
                   <div className="meal-day-buttons">
-                    <button onClick={() => handleMealClick(day, mealType)}>
-                      Edit
-                    </button>
-                    <button onClick={() => handleClearMeal(day, mealType)}>
-                      Clear
+                    <button onClick={(event) => {
+                      event.stopPropagation();
+                      console.log(`Clear clicked for ${day} - ${mealType}`); // Debug log for Clear
+                      handleClearMeal(day, mealType);
+                    }}>
+                        Clear
                     </button>
                   </div>
                 )}
@@ -87,7 +102,7 @@ const Plan = () => {
         ))}
       </div>
 
-      {editing.day && (
+      {editing.day && editing.mealType && (
         <div className="meal-selector">
           <h3>Select a meal for {editing.mealType} on {editing.day}</h3>
           <div className="meal-plan-buttons">
@@ -96,14 +111,19 @@ const Plan = () => {
                 {meal}
               </button>
             ))}
+
+          </div>
+          <div className="meal-plan-navigation">
             <button onClick={handleCloseModal}>
-              Back
+                Back
             </button>
           </div>
+
           {error && <p className="error">{error}</p>}
         </div>
       )}
     </div>
+
   );
 };
 
