@@ -29,7 +29,6 @@ const Plan = () => {
 
   const handleMealClick = (day, mealType) => {
     setEditing({ day, mealType });
-    console.log('Editing state set:', { day, mealType });
   };
 
   const handleSaveMeal = (meal) => {
@@ -55,8 +54,6 @@ const Plan = () => {
     }));
 
     setEditing({ day: null, mealType: null });
-    console.log('Editing state cleared:', editing); // Check if editing is cleared
-
   };
 
   const handleCloseModal = () => {
@@ -89,7 +86,6 @@ const Plan = () => {
                   <div className="meal-day-buttons">
                     <button onClick={(event) => {
                       event.stopPropagation();
-                      console.log(`Clear clicked for ${day} - ${mealType}`); // Debug log for Clear
                       handleClearMeal(day, mealType);
                     }}>
                         Clear
