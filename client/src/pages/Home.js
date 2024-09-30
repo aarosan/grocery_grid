@@ -5,11 +5,12 @@ import Sidebar from '../components/Sidebar';
 import { useNavigate } from 'react-router-dom';
 import { useMeals } from '../hooks/useMeals';
 import { useGroceryList } from '../hooks/useGroceryList';
+import { isTokenExpired } from '../utils/jwtUtils';
 
 const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
 
 const Home = ({ signOut }) => {
-    const { meals, error, setMeals } = useMeals();
+    const { meals, loading, error, setMeals } = useMeals();
     const { groceryList, loadGroceryList, addIngredientsToGroceryList, handleIngredientChange, deleteIngredient, saveGroceryList } = useGroceryList();
 
     const [selectedMeal, setSelectedMeal] = useState(null);
@@ -19,8 +20,13 @@ const Home = ({ signOut }) => {
     const mealTypes = ['Breakfast', 'Lunch', 'Snack', 'Dinner'];
 
     useEffect(() => {
-        loadGroceryList();
-    }, [loadGroceryList]);
+        const token = localStorage.getItem('token');
+        if (isTokenExpired(token)) {
+            navigate('/login');
+        } else {
+            loadGroceryList(); // Directly call the function
+        }
+    }, [navigate, loadGroceryList]);
 
     const openForm = (meal = null, formMode) => {
         setSelectedMeal(meal);
@@ -120,6 +126,10 @@ const Home = ({ signOut }) => {
         navigate('/plan');
     }
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="home-container">
             <div className="header-container">
@@ -135,16 +145,20 @@ const Home = ({ signOut }) => {
 
             {error && <p className="error-message">{error}</p>}
 
-            {mealTypes.map(type => (
-                <MealType 
-                    key={type} 
-                    type={type} 
-                    mealsData={meals[type] || []} 
-                    onEdit={(meal) => openForm(meal, 'edit')} 
-                    onDelete={(meal) => deleteMeal(meal)}
-                    onOpenIngredients={(meal) => openForm(meal, 'ingredients')}
-                />
-            ))}
+            {loading ? (
+                <p>Loading meals...</p> // Display a loading message
+            ) : (
+                mealTypes.map(type => (
+                    <MealType 
+                        key={type} 
+                        type={type} 
+                        mealsData={meals[type] || []} 
+                        onEdit={(meal) => openForm(meal, 'edit')} 
+                        onDelete={(meal) => deleteMeal(meal)}
+                        onOpenIngredients={(meal) => openForm(meal, 'ingredients')}
+                    />
+                ))
+            )}
             
             {mode && (
                 <div className="sidebar-overlay">

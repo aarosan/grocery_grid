@@ -10,9 +10,11 @@ export const useMeals = () => {
         Dinner: []
     });
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchMeals = async () => {
+            setLoading(true);
             try {
                 const token = localStorage.getItem('token');
                 const response = await fetch(`${apiUrl}/api/users/meals`, {
@@ -40,11 +42,13 @@ export const useMeals = () => {
                 setError(null);
             } catch (error) {
                 setError(`Failed to fetch meals: ${error.message}`);
+            } finally {
+                setLoading(false);
             }
         };
     
         fetchMeals();
     }, []);
 
-    return { meals, error, setMeals };
+    return { meals, error, loading, setMeals };
 };
