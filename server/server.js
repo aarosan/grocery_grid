@@ -17,7 +17,20 @@ const apiUrl = process.env.REACT_APP_HEROKU_URL || 'http://localhost:5000';
 
 console.log('Client URL:', clientUrl);
 // Middleware
-app.use(cors({ origin: clientUrl }));
+
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',') || clientUrl;
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
