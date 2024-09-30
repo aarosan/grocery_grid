@@ -13,7 +13,7 @@ Welcome to **Grocery Grid**—your one-stop solution to meal planning and grocer
 
 ```mermaid
 graph TD
-    A[User] -->|Interacts<br>with UI| B[React Frontend]
+    A[User] -->|Interacts<br>with UI| B[Home Page Frontend]
     B -->|POST login/signup| C[User REST API]
     C --> D{Authentication}
     D -->|Invalid User| F[Error Message]
@@ -21,8 +21,13 @@ graph TD
 
     E -->|Token Sent| B
 
+
     B -->|CRUD meal data| G[Meal REST API]
     G --> H[(MongoDB)]
+
+    B -- Meal plan --> M[localStroage Web API]
+    M -- /plan --> N[(LocalStorage)]
+    N --> P[Meal Planning Page<br>Frontend]
 
     B -->|Grocery list| K[localStorage Web API]
     K --> L[(LocalStorage)]
