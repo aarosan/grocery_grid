@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMeals } from '../hooks/useMeals';
 import "../style/Plan.css";
 import { Link } from "react-router-dom";
@@ -7,15 +7,17 @@ const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const mealTypes = ["Breakfast", "Lunch", "Snack", "Dinner"];
 
 const Plan = () => {
-  const [mealPlan, setMealPlan] = useState(
-    daysOfWeek.reduce((acc, day) => {
-      acc[day] = { Breakfast: "", Lunch: "", Snack: "", Dinner: "" };
-      return acc;
-    }, {})
-  );
+  const [mealPlan, setMealPlan] = useState(() => {
+    const savedPlan = localStorage.getItem("mealPlan");
+    return savedPlan
+      ? JSON.parse(savedPlan)
+      : daysOfWeek.reduce((acc, day) => {
+          acc[day] = { Breakfast: "", Lunch: "", Snack: "", Dinner: "" };
+          return acc;
+        }, {});
+  })
 
   const [editing, setEditing] = useState({ day: null, mealType: null });
-
   const { meals, error } = useMeals();
 
   // Transform meals dictionary into an object with meal types as keys
@@ -26,6 +28,20 @@ const Plan = () => {
     acc[type] = mealArray.map(meal => meal.mealName);
     return acc;
   }, {});
+
+  // Load meal plan from localStorage
+  useEffect(() => {
+    const savedPlan = localStorage.getItem("mealPlan");
+    if (savedPlan) {
+      setMealPlan(JSON.parse(savedPlan));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(meals).length > 0) {
+      localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+    }
+  }, [mealPlan, meals]);
 
   const handleMealClick = (day, mealType) => {
     setEditing({ day, mealType });
@@ -44,7 +60,6 @@ const Plan = () => {
   };
 
   const handleClearMeal = (day, mealType) => {
-
     setMealPlan((prevPlan) => ({
       ...prevPlan,
       [day]: {
@@ -52,7 +67,6 @@ const Plan = () => {
         [mealType]: "",
       },
     }));
-
     setEditing({ day: null, mealType: null });
   };
 
@@ -107,7 +121,6 @@ const Plan = () => {
                 {meal}
               </button>
             ))}
-
           </div>
           <div className="meal-plan-navigation">
             <button onClick={handleCloseModal}>
