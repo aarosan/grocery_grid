@@ -2,7 +2,7 @@
 
 Welcome to **Grocery Grid**—your one-stop solution to meal planning and grocery shopping. Easily log in, add your favorite meals, plan your weekly menu, and generate a shopping list with the ingredients you need. Say goodbye to last-minute store runs!
 
-## 🌟 Features
+## Features
 
 - **User Authentication:** Secure login and signup.
 - **Meal Management:** Add, edit, and manage your favorite meals.
@@ -38,7 +38,7 @@ graph TD
     O -->|Display updated data| B
 ```
 
-## 🛠 Tech Stack
+## Tech Stack
 
 This project is built with the **MERN** stack:
 
@@ -47,7 +47,7 @@ This project is built with the **MERN** stack:
 - **React**: For the frontend.
 - **Node.js**: For server-side logic.
 
-## 🚀 Getting Started
+## Getting Started
 
 Ready to get your own Grocery Grid up and running? Follow these steps:
 
@@ -122,17 +122,17 @@ To stop the server and client, you can use `Ctrl + C` in the terminal where they
 - Make sure MongoDB is running locally or in your preferred environment before starting the server.
 - If you make changes to the code, restart the server and client to see them reflected.
 
-## 🎉 Contributing
+## Contributing
 
 Got a cool idea for a feature? Found a bug? Contributions are more than welcome! Feel free to open an issue or submit a pull request.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
-## 📚 Citing Sources
+## Citing Sources
 
-We used some amazing SVG illustrations for the signup and login pages. These were generously provided under the CC0 license from the Figma Community
+We used some amazing SVG illustrations for the favicon and signup/login pages. These were generously provided under the CC0 license from the Figma Community
 
 ### A Special Thanks
 
