@@ -64,6 +64,10 @@ const Login = ({ setToken }) => {
             Don't have an account? <Link to="/signup">Sign up</Link>
           </p>
 
+          <p>
+            Want to expolore without an account? <Link to="/pilot">Continue as guest</Link>
+          </p>
+
         </div>
       </div>
     </div>
