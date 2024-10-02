@@ -1,0 +1,67 @@
+[
+    {
+      "mealType": "Breakfast",
+      "mealName": "Raisin Bran",
+      "ingredients": [
+        "Kellogg's Raisin Bran Original Cold Breakfast Cereal",
+        "Fairlife Fat Free Lactose Free Milk"
+      ]
+    },
+    {
+      "mealType": "Breakfast",
+      "mealName": "Cheerios",
+      "ingredients": [
+        "General Mills Honey Nut Cheerios Cereal",
+        "Fairlife Fat Free Lactose Free Milk"
+      ]
+    },
+    {
+      "mealType": "Breakfast",
+      "mealName": "Everything Bagel",
+      "ingredients": [
+        "Thomas' Everything Pre-Sliced Bagels",
+        "H‑E‑B Chive & Onion Cream Cheese Spread"
+      ]
+    },
+    {
+      "mealType": "Lunch",
+      "mealName": "Roast Beef Sandwich",
+      "ingredients": [
+        "H‑E‑B Round Top Large White Enriched Bread",
+        "Hill Country Fare Thin Sliced Roast Beef",
+        "H‑E‑B Yellow Mustard",
+        "H‑E‑B Jalapeño Monterey Jack Sliced Cheese"
+      ]
+    },
+    {
+      "mealType": "Lunch",
+      "mealName": "Spinach Salad",
+      "ingredients": [
+        "H‑E‑B Fresh Baby Spinach",
+        "H‑E‑B Onion & Garlic Premium Croutons",
+        "H‑E‑B Bacon Pieces",
+        "Fresh Gourmet Crispy Jalapenos Lightly Salted",
+        "Whataburger Spicy Jalapeno Ranch",
+        "1 Fresh Red Onion",
+        "1 Fresh Cilantro",
+        "4 Fresh Lime"
+      ]
+    },
+    {
+      "mealType": "Snack",
+      "mealName": "Cheez-Its",
+      "ingredients": [
+        "Cheez-Its"
+      ]
+    },
+    {
+      "mealType": "Dinner",
+      "mealName": "Chicken, Rice, and Potatoes",
+      "ingredients": [
+        "H‑E‑B Natural Boneless Chicken Breasts",
+        "Zatarain's New Orleans Style Long Grain & Wild Rice Mix",
+        "H‑E‑B Frozen Steamable Red Potatoes & Green Beans in Butter Sauce"
+      ]
+    }
+  ]
+  
