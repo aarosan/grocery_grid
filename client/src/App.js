@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Plan from './pages/Plan';
+import Pilot from './pages/Pilot';
+import PilotPlan from './pages/PilotPlan';
 import './App.css';
 
 const AuthContext = createContext();
@@ -48,6 +50,8 @@ const App = () => {
         element={token ? <Home signOut={signOut} /> : <Navigate to="/login" />}
       />
       <Route path="/plan" element={<Plan />} />
+      <Route path="/pilot" element={<Pilot />} />
+      <Route path="/pilot-plan" element={<PilotPlan />} />
     </Routes>
   );
 };
