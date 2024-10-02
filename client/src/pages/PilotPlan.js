@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useMeals } from '../hooks/useMeals';
 import "../style/Plan.css";
 import { Link } from "react-router-dom";
+import mealData from "../data/meals.json";
 
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 const mealTypes = ["Breakfast", "Lunch", "Snack", "Dinner"];
 
-const Plan = () => {
+const PilotPlan = () => {
   const [mealPlan, setMealPlan] = useState(() => {
     const savedPlan = localStorage.getItem("mealPlan");
     return savedPlan
@@ -18,12 +18,11 @@ const Plan = () => {
   })
 
   const [editing, setEditing] = useState({ day: null, mealType: null });
-  const { meals, error } = useMeals();
 
   // Transform meals dictionary into an object with meal types as keys
   const transformedMeals = mealTypes.reduce((acc, type) => {
     // Access the meal type's array from the meals object
-    const mealArray = meals[type] || [];
+    const mealArray = mealData.filter(meal => meal.mealType === type);
     // Map the array to get meal names
     acc[type] = mealArray.map(meal => meal.mealName);
     return acc;
@@ -37,12 +36,6 @@ const Plan = () => {
       setMealPlan(JSON.parse(savedPlan));
     }
   }, []);
-
-  useEffect(() => {
-    if (Object.keys(meals).length > 0) {
-      localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
-    }
-  }, [mealPlan, meals]);
 
   const handleMealClick = (day, mealType) => {
     setEditing({ day, mealType });
@@ -129,7 +122,6 @@ const Plan = () => {
             </button>
           </div>
 
-          {error && <p className="error">{error}</p>}
         </div>
       )}
     </div>
@@ -137,4 +129,4 @@ const Plan = () => {
   );
 };
 
-export default Plan;
+export default PilotPlan;
