@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'your_jwt_secret'; // Ensure this matches the secret used for signing the token
+require('dotenv').config(); 
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware for token validation with logging
 const authenticateToken = (req, res, next) => {
